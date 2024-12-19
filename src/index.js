@@ -18,9 +18,19 @@ const countModifier = (count = 0, action) => {
 //1. store 만들기, reducer 넣어줘야함
 const countStore = createStore(countModifier);
 
-//action에 부르기
-countStore.dispatch({ type: "ADD" });
-countStore.dispatch({ type: "ADD" });
-countStore.dispatch({ type: "MINUS" });
+const onChange = () => {
+	number.innerText = countStore.getState();
+};
 
-console.log(countStore.getState());
+countStore.subscribe(onChange);
+//reducer에게 action보내는법: dispatch
+
+const handleAdd = () => {
+	countStore.dispatch({ type: "ADD" });
+};
+const handleMinus = () => {
+	countStore.dispatch({ type: "MINUS" });
+};
+
+add.addEventListener("click", handleAdd);
+minus.addEventListener("click", handleMinus);
