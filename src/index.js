@@ -44,7 +44,7 @@ const onSubmit = (e) => {
 	e.preventDefault();
 	const toDo = input.value;
 	input.value = "";
-	store.dispatch({ type: ADD_TODO, text: toDo });
+	addToDo(toDo);
 };
 
 form.addEventListener("submit", onSubmit);
