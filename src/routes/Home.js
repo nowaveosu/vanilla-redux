@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { actionCreators } from "../store";
+import ToDo from "../components/ToDo";
 
 // connect: component와 redux store을 연결, component는 props로 redux state를 받음
 // mapStateToProps: store의 state를 props로 변환하는 함수, state를 받아 props객체로 리턴
@@ -27,7 +28,9 @@ function Home({ toDos, addToDo }) {
 				<input type="text" value={text} onChange={onChange} />
 				<button>Add</button>
 			</form>
-			<ul>{JSON.stringify(toDos)}</ul>
+			<ul>
+				{toDos && toDos.map((toDo) => <ToDo {...toDo} />)}
+			</ul>
 		</>
 	);
 }
