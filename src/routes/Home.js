@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
-import { actionCreators } from "../store";
+import { add } from "../store";
 import ToDo from "../components/ToDo";
 
 // connect: component와 redux store을 연결, component는 props로 redux state를 받음
@@ -45,7 +45,7 @@ function mapStateToProps(state) {
 //mapDispatchToProps : react component로부터 reducer에게 dispatch함
 function mapDispatchToProps(dispatch, ownProps) {
 	return {
-		addToDo: (text) => dispatch(actionCreators.addToDo(text)),
+		addToDo: (text) => dispatch(add(text)),
 	};
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
