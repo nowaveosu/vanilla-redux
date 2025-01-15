@@ -1,5 +1,9 @@
 import { createStore } from "redux";
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import {
+	configureStore,
+	createAction,
+	createReducer,
+} from "@reduxjs/toolkit";
 const ADD = "ADD";
 const DELETE = "DELETE";
 
@@ -32,8 +36,8 @@ const reducer = createReducer([], (builder) => {
 		});
 });
 
-const store = createStore(reducer);
-
+//redux developer tools 사용가능
+const store = configureStore({ reducer });
 export const actionCreators = {
 	addToDo,
 	deleteToDo,
